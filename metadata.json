@@ -1,0 +1,11 @@
+{
+    "authors": ["@manuelschneid3r"],
+    "description": "Manage Homebrew formulae and casks",
+    "description": "Verwalte Homebrew Formeln und Casks",
+    "license": "MIT",
+    "maintainers": ["@manuelschneid3r"],
+    "name": "Homebrew",
+    "plugin_dependencies": ["applications"],
+    "readme_url" : "https://github.com/albertlauncher/albert-plugin-homebrew/blob/main/README.md",
+    "url": "https://github.com/albertlauncher/albert-plugin-homebrew"
+}
