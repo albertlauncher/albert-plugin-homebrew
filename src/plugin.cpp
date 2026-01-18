@@ -7,7 +7,7 @@
 #include <QJsonObject>
 #include <QProcess>
 #include <QStandardPaths>
-#include <albert/iconutil.h>
+#include <albert/icon.h>
 #include <albert/logging.h>
 #include <albert/matcher.h>
 #include <albert/standarditem.h>
@@ -23,7 +23,7 @@ namespace {
 applications::Plugin *applications_plugin;
 static const auto brew = u"brew"_s;
 static const auto sep = u" · "_s;
-static auto makeDefaultIcon() { return makeGraphemeIcon(u"📦"_s); };
+static unique_ptr<Icon> makeDefaultIcon() { return Icon::grapheme(u"📦"_s); };
 }
 
 // -------------------------------------------------------------------------------------------------
@@ -48,11 +48,11 @@ public:
     unique_ptr<Icon> icon() const override
     {
         if (disabled_)
-            return makeComposedIcon(makeDefaultIcon(), makeGraphemeIcon(u"🛑"_s), 1., .4);
+            return Icon::composed(makeDefaultIcon(), Icon::grapheme(u"🛑"_s), 1., .4);
         else if (outdated_)
-            return makeComposedIcon(makeDefaultIcon(), makeGraphemeIcon(u"⚠️"_s), 1., .4);
+            return Icon::composed(makeDefaultIcon(), Icon::grapheme(u"⚠️"_s), 1., .4);
         else if (installed_)
-            return makeComposedIcon(makeDefaultIcon(), makeGraphemeIcon(u"✅"_s), 1., .4);
+            return Icon::composed(makeDefaultIcon(), Icon::grapheme(u"✅"_s), 1., .4);
         else
             return makeDefaultIcon();
     }
@@ -242,8 +242,8 @@ ItemGenerator Plugin::items(albert::QueryContext &ctx)
                                        tr("Update"),
                                        desc,
                                        [] {
-                                           return makeComposedIcon(makeDefaultIcon(),
-                                                                   makeGraphemeIcon(u"⬆️"_s),
+                                           return Icon::composed(makeDefaultIcon(),
+                                                                   Icon::grapheme(u"⬆️"_s),
                                                                    1.,
                                                                    .4);
                                        },
