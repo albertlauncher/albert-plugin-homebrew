@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(homebrew VERSION 0.0.0)
+project(homebrew VERSION 1.0.0)
 
 find_package(Albert REQUIRED)
 find_package(QCoro6 REQUIRED COMPONENTS Coro)
