@@ -231,7 +231,7 @@ static vector<QString> getPackageNames()
     return package_names;
 }
 
-ItemGenerator Plugin::items(albert::QueryContext &ctx)
+ItemGenerator Plugin::items(QueryContext ctx)
 {
     const auto query = ctx.query().trimmed();
 

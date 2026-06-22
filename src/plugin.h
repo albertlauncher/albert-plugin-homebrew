@@ -16,7 +16,7 @@ public:
     Plugin();
 
     QString defaultTrigger() const override;
-    albert::ItemGenerator items(albert::QueryContext &context) override;
+    albert::ItemGenerator items(albert::QueryContext) override;
 
 private:
     albert::StrongDependency<applications::Plugin> applications_plugin_;
